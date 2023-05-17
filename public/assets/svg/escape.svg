@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+  <style>
+    .arrow {
+      fill: #ffffff;
+    }
+    .button-text {
+      fill: #ffffff;
+      font-family: Arial;
+      font-size: 14px;
+    }
+    .disabled-text {
+      fill: #808080;
+      font-family: Arial;
+      font-size: 14px;
+    }
+  </style>
+  <rect x="10" y="10" width="120" height="40" rx="5" ry="5" fill="#808080" />
+  <text x="70" y="30" dominant-baseline="middle" text-anchor="middle" class="button-text" pointer-events="none">Escape now!</text>
+  <path d="M150 30 L170 30 L165 25 L170 30 L165 35" class="arrow" />
+  <text x="180" y="30" dominant-baseline="middle" text-anchor="end" class="disabled-text" pointer-events="none">Click here to start</text>
+</svg>

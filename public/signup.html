@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Signup</title>
+		<link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1 class="logo">Signup</h1>
+			</header>
+			<form id="signupForm" onsubmit="signup(event)">
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" required />
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" required />
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn">Signup</button>
+				</div>
+				<div class="form-group">
+					<p>Already have an account? <a href="/login.html">Login</a></p>
+				</div>
+			</form>
+		</div>
+
+		<script>
+			const signup = async (e) => {
+				e.preventDefault();
+				const username = document.getElementById("username").value;
+				const password = document.getElementById("password").value;
+
+				let data = {
+					username: username,
+					password: password,
+				};
+
+				let response = await fetch("/api/auth/register", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				});
+
+				if (response.status === 200) {
+					window.location.replace("/login.html");
+				} else {
+					alert("Signup failed.");
+				}
+			};
+		</script>
+	</body>
+</html>

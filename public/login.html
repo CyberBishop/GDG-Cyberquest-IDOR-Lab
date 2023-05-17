@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1 class="logo">CyberQuest</h1>
+			</header>
+			<main>
+				<h2 class="title">Login</h2>
+				<form action="/auth/login" method="post" onsubmit="login(event)">
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input type="text" id="username" name="username" required />
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" id="password" name="password" required />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn">Login</button>
+					</div>
+				</form>
+				<p class="message">
+					Don't have an account? <a href="/signup.html">Sign up</a>
+				</p>
+			</main>
+		</div>
+		<script>
+			const login = async (e) => {
+				e.preventDefault();
+				const username = document.getElementById("username").value;
+				const password = document.getElementById("password").value;
+
+				let data = {
+					username: username,
+					password: password,
+				};
+
+				await fetch("/api/auth/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				})
+					.then((response) => {
+						return response.json();
+					})
+					.then((data) => {
+						window.location.replace(`/user/${data.id}`);
+					});
+			};
+		</script>
+	</body>
+</html>
