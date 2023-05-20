@@ -34,14 +34,14 @@ exports.login = async (req, res) => {
 		const user = await User.findOne({ username });
 
 		if (!user) {
-			return res.status(401).json("User not found");
+			return res.status(401).json({ error: "User not found"});
 		}
 
 		const validPassword =
 			Buffer.from(password).toString("base64") === user.password;
 
 		if (!validPassword) {
-			return res.status(400).json("Wrong password");
+			return res.status(400).json({ error: "Invalid Password" }});
 		}
 
 		const token = jwt.sign(

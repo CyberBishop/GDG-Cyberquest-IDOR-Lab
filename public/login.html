@@ -51,7 +51,12 @@
 						return response.json();
 					})
 					.then((data) => {
-						window.location.replace(`/user/${data.id}`);
+						if (data.error) {
+							alert(data.error);
+							return;
+						} else {
+							window.location.replace(`/user/${data.id}`);
+						}
 					});
 			};
 		</script>
