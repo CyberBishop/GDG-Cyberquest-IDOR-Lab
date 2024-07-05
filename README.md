@@ -1,4 +1,4 @@
-# CyberQuest CTF - Insecure Direct Object Reference (IDOR) Lab
+# Google Developer Group Lagos CyberQuest CTF - Insecure Direct Object Reference (IDOR) Lab
 
 ## Description
 
